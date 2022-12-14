@@ -8,9 +8,32 @@ import {
   faBookmark,
   faFaceSmile,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const Post = ({ userProfile, postImg, description }) => {
   let like = Math.floor(Math.random() * 100000);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [isCommentEmpty, setIsCommentEmpty] = useState(true);
+
+  const handleLike = (e) => {
+    e.preventDefault();
+    setIsLiked((current) => !current);
+  };
+
+  const handleSaved = (e) => {
+    e.preventDefault();
+    setIsSaved((current) => !current);
+  };
+
+  const handleCommentEmpty = (e) => {
+    e.preventDefault();
+    if (e.target.value !== "") {
+      setIsCommentEmpty(false);
+    } else {
+      setIsCommentEmpty(true);
+    }
+  };
 
   return (
     // CONTAINER DIV
@@ -29,7 +52,10 @@ const Post = ({ userProfile, postImg, description }) => {
         {/* 3 ICON DIV , LIKE, COMMENT, SEND*/}
         <div className="flex items-center justify-start gap-6">
           <FontAwesomeIcon
-            className="w-6 h-6 text-slate-300"
+            onClick={handleLike}
+            className={
+              isLiked ? "w-6 h-6 text-red-400" : "w-6 h-6 text-slate-300"
+            }
             size="3x"
             icon={faHeart}
           />
@@ -48,7 +74,8 @@ const Post = ({ userProfile, postImg, description }) => {
         {/* BOOKMARK ICON */}
 
         <FontAwesomeIcon
-          className="w-6 h-6 text-slate-300"
+          className={isSaved ? "w-6 h-6 text-black" : "w-6 h-6 text-slate-300"}
+          onClick={handleSaved}
           size="3x"
           icon={faBookmark}
         />
@@ -69,10 +96,19 @@ const Post = ({ userProfile, postImg, description }) => {
         />
         <input
           className="outline-none decoration-slate-400 "
+          onChange={handleCommentEmpty}
           type="text"
           placeholder="Aggiungi un commento..."
         />
-        <p className="font-bold text-blue-200">Pubblica</p>
+        <p
+          className={
+            isCommentEmpty
+              ? "font-bold text-blue-200"
+              : "font-bold text-blue-400"
+          }
+        >
+          Pubblica
+        </p>
       </div>
     </div>
   );
