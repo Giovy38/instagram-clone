@@ -12,15 +12,23 @@ import {
 
 const Navbar = () => {
   return (
-    <div className="items-center text-center flex justify-around border-b-2 border-slate-300 border-solid">
-      <img className="w-40 cursor-pointer" src={logo} alt="logo-not-found" />
+    // navbar div
+    <div
+      // style={{ width: "max-content", backgroundColor: "red" }}
+      className="items-center text-center flex justify-around border-b-2 border-slate-300 border-solid "
+    >
+      <img
+        className="w-20 tablet-n:w-[8rem] cursor-pointer"
+        src={logo}
+        alt="logo-not-found"
+      />
       <input
-        className=" bg-slate-200 h-6 rounded-md text-center"
+        className=" bg-slate-200 h-6 w-auto max-w-[4rem] mobile-m:max-w-[8rem] mobile-l:max-w-[10rem] rounded-md text-center"
         type="text"
         placeholder="Cerca"
       />
-
-      <div className="flex w-48 justify-around items-center">
+      {/* div with icon  */}
+      <div className="flex w-40 justify-around items-center tablet-n:w-48">
         <FontAwesomeIcon
           className="cursor-pointer text-slate-300 w-7"
           size="3x"
