@@ -1,8 +1,8 @@
-const ProfileImg = ({ profileImg }) => {
+const ProfileImg = ({ profileImg, width, heigh }) => {
   return (
     <div>
       <img
-        className="w-7 h-7 cursor-pointer rounded-full flex-wrap object-cover"
+        className={` ${width} ${heigh} cursor-pointer rounded-full flex-wrap object-cover`}
         src={profileImg}
         alt=""
       />

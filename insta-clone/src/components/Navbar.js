@@ -1,6 +1,6 @@
 import logo from "../img/writeLogo.jpg";
 import ProfileImg from "./ProfileImg";
-import profileImg from "../img/tonyProfile.jpg";
+import profileImg from "../img/tomHolland.jpg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -41,7 +41,7 @@ const Navbar = () => {
           size="3x"
           icon={faBookmark}
         />
-        <ProfileImg profileImg={profileImg} />
+        <ProfileImg profileImg={profileImg} width={"w-7"} heigh={"h-7"} />
       </div>
     </div>
   );
