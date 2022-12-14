@@ -56,9 +56,9 @@ const Post = ({ userProfile, postImg, description }) => {
       <p className="ml-3 mt-2">
         Piace a <span className="font-bold">{like}</span> persone{" "}
       </p>
-      <p className="ml-3">
+      <p className="ml-3 text-ellipsis line-clamp-5">
         <span className="font-bold">{userProfile}</span>:{" "}
-        <span className="text-ellipsis line-clamp-5">{description}</span>
+        <span>{description}</span>
       </p>
       {/* DIV COMMENT */}
       <div className="mt-3 flex items-center justify-center gap-2">
