@@ -8,9 +8,10 @@ module.exports = {
       "mobile-m": "375px",
       "mobile-l": "425px",
       "tablet-n": "768px",
-      "laptop-n": "1024",
-      "laptop-l": "1440",
+      "laptop-n": "1024px",
+      "laptop-l": "1440px",
+      "laptop-4k": "2560px",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };

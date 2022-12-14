@@ -12,22 +12,21 @@ import {
 
 const Navbar = () => {
   return (
-    // navbar div
-    <div
-      // style={{ width: "max-content", backgroundColor: "red" }}
-      className="items-center text-center flex justify-around border-b-2 border-slate-300 border-solid "
-    >
+    // NAVBAR DIV
+    <div className="items-center text-center flex justify-around border-b-2 border-slate-300 border-solid ">
+      {/* INSTAGRAM LOGO IMG */}
       <img
         className="w-20 tablet-n:w-[8rem] cursor-pointer"
         src={logo}
         alt="logo-not-found"
       />
+      {/* SEARCH INPUT */}
       <input
-        className=" bg-slate-200 h-6 w-auto max-w-[4rem] mobile-m:max-w-[8rem] mobile-l:max-w-[10rem] rounded-md text-center"
+        className=" bg-slate-200 h-6 w-auto hidden mobile-m:block mobile-m:max-w-[8rem] mobile-l:max-w-[10rem] rounded-md text-center"
         type="text"
         placeholder="Cerca"
       />
-      {/* div with icon  */}
+      {/* ICON DIV */}
       <div className="flex w-40 justify-around items-center tablet-n:w-48">
         <FontAwesomeIcon
           className="cursor-pointer text-slate-300 w-7"
