@@ -9,6 +9,11 @@ import {
   faBookmark,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
+import MyPost from "../components/MyPost";
+import myPostImg from "../img/tomAndChrisHemsw.jpg";
+import myPostImg2 from "../img/tomAndElisabeth.jpg";
+import myPostImg3 from "../img/tomAndAndrew.jpg";
+import myPostImg4 from "../img/tom.jpg";
 
 const Profile = () => {
   let userNick = "Tom Holland2013";
@@ -85,6 +90,12 @@ const Profile = () => {
             <span>Saved Post</span>
           </div>
         </Link>
+      </div>
+      <div className=" flex items-center justify-center flex-col tablet-n:flex-row tablet-n:flex-wrap tablet-n:gap-3 laptop-n:justify-start laptop-n:ml-12 ">
+        <MyPost className="flex-[50%]" myPostImg={myPostImg} />
+        <MyPost className="flex-[50%]" myPostImg={myPostImg2} />
+        <MyPost className="flex-[50%]" myPostImg={myPostImg3} />
+        <MyPost className="flex-[50%]" myPostImg={myPostImg4} />
       </div>
     </div>
   );
