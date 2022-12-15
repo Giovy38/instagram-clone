@@ -35,11 +35,14 @@ const Navbar = () => {
     // NAVBAR DIV
     <div className="items-center text-center flex justify-around border-b-2 border-slate-300 border-solid ">
       {/* INSTAGRAM LOGO IMG */}
-      <img
-        className="w-20 tablet-n:w-[8rem] cursor-pointer"
-        src={logo}
-        alt="logo-not-found"
-      />
+      <Link to="/">
+        <img
+          className="w-20 tablet-n:w-[8rem] cursor-pointer"
+          src={logo}
+          alt="logo-not-found"
+        />
+      </Link>
+
       {/* SEARCH INPUT */}
       <input
         className=" bg-slate-200 h-6 w-full hidden mobile-m:block mobile-m:max-w-[8rem] mobile-l:max-w-[10rem] tablet-n:max-w-[20rem] rounded-md text-center"

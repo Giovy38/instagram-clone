@@ -27,7 +27,7 @@ const Post = ({ userProfile, postImg, description }) => {
 
   const handleCommentEmpty = (e) => {
     e.preventDefault();
-    if (e.target.value !== "") {
+    if (e.target.value.trim() !== "") {
       setIsCommentEmpty(false);
     } else {
       setIsCommentEmpty(true);

@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import SavedPost from "./pages/SavedPost";
 import LikedPost from "./pages/LikedPost";
 import CreateNewPost from "./pages/CreateNewPost";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import { Route, Routes } from "react-router-dom";
 
@@ -16,6 +18,8 @@ function App() {
         <Route path="/liked-post" element={<LikedPost />} />
         <Route path="/create-new-post" element={<CreateNewPost />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </div>
   );
