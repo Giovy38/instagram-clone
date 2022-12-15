@@ -11,18 +11,17 @@ import {
 import { useState } from "react";
 
 const Post = ({ userProfile, postImg, description }) => {
-  let like = Math.floor(Math.random() * 100000);
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [isCommentEmpty, setIsCommentEmpty] = useState(true);
+  const [like, setLike] = useState(Math.floor(Math.random() * 100000));
 
-  const handleLike = (e) => {
-    e.preventDefault();
+  const handleLike = () => {
+    !isLiked ? setLike(like + 1) : setLike(like - 1);
     setIsLiked((current) => !current);
   };
 
-  const handleSaved = (e) => {
-    e.preventDefault();
+  const handleSaved = () => {
     setIsSaved((current) => !current);
   };
 

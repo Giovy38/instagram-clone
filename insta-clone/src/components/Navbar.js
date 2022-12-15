@@ -15,12 +15,20 @@ const Navbar = () => {
   const [homeClicked, setHomeClicked] = useState(true);
   const [likedClicked, setLikedClicked] = useState(false);
   const [savedClicked, setSavedClicked] = useState(false);
+  const [createPostClicked, setCreatePostClicked] = useState(false);
+  const [profileClicked, setProfileClicked] = useState(false);
 
   const selectedPage = (selectedIcon) => {
     // setHomeClicked(true);
     selectedIcon === "home" ? setHomeClicked(true) : setHomeClicked(false);
     selectedIcon === "liked" ? setLikedClicked(true) : setLikedClicked(false);
     selectedIcon === "saved" ? setSavedClicked(true) : setSavedClicked(false);
+    selectedIcon === "create"
+      ? setCreatePostClicked(true)
+      : setCreatePostClicked(false);
+    selectedIcon === "profile"
+      ? setProfileClicked(true)
+      : setProfileClicked(false);
   };
 
   return (
@@ -34,7 +42,7 @@ const Navbar = () => {
       />
       {/* SEARCH INPUT */}
       <input
-        className=" bg-slate-200 h-6 w-auto hidden mobile-m:block mobile-m:max-w-[8rem] mobile-l:max-w-[10rem] rounded-md text-center"
+        className=" bg-slate-200 h-6 w-full hidden mobile-m:block mobile-m:max-w-[8rem] mobile-l:max-w-[10rem] tablet-n:max-w-[20rem] rounded-md text-center"
         type="text"
         placeholder="Cerca"
       />
@@ -53,11 +61,19 @@ const Navbar = () => {
           />
         </Link>
 
-        <FontAwesomeIcon
-          className="text-white bg-slate-300 cursor-pointer rounded-md w-5 h-5  p-1"
-          size="3x"
-          icon={faPlus}
-        />
+        <Link to="/create-new-post">
+          <FontAwesomeIcon
+            onClick={() => selectedPage("create")}
+            className={
+              createPostClicked
+                ? "text-white bg-black cursor-pointer rounded-md w-5 h-5  p-1"
+                : "text-white bg-slate-300 cursor-pointer rounded-md w-5 h-5  p-1"
+            }
+            size="3x"
+            icon={faPlus}
+          />
+        </Link>
+
         <Link to="/liked-post">
           <FontAwesomeIcon
             onClick={() => selectedPage("liked")}
@@ -84,7 +100,17 @@ const Navbar = () => {
           />
         </Link>
 
-        <ProfileImg profileImg={profileImg} width={"w-7"} heigh={"h-7"} />
+        <Link onClick={() => selectedPage("profile")} to="/profile">
+          <div
+            className={
+              profileClicked
+                ? "border-2 border-solid border-black p-0.5 rounded-full"
+                : null
+            }
+          >
+            <ProfileImg profileImg={profileImg} width={"w-7"} heigh={"h-7"} />
+          </div>
+        </Link>
       </div>
     </div>
   );
