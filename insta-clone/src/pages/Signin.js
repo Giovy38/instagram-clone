@@ -1,8 +1,31 @@
 import logo from "../img/writeLogo.jpg";
 import video from "../img/loginVid.gif";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Signin = () => {
+  const [emailEmpty, setEmailEmpty] = useState("");
+  const [passwordEmpty, setPasswordEmpty] = useState("");
+  const [isEmpty, setIsEmpty] = useState(true);
+
+  const isEmailEmpty = (e) => {
+    setEmailEmpty(e.target.value);
+    if (emailEmpty !== "" && passwordEmpty !== "") {
+      setIsEmpty(false);
+    } else {
+      setIsEmpty(true);
+    }
+  };
+
+  const isPasswordEmpty = (e) => {
+    setPasswordEmpty(e.target.value);
+    if (emailEmpty !== "" && passwordEmpty !== "") {
+      setIsEmpty(false);
+    } else {
+      setIsEmpty(true);
+    }
+  };
+
   return (
     <div className="flex items-center justify-center">
       {/* RIGHT VIDEO DIV */}
@@ -19,16 +42,20 @@ const Signin = () => {
               <input
                 className="h-10 rounded-md w-[224px] border-2 border-solid border-slate-400 pl-2 font-mono "
                 type="email"
+                onChange={isEmailEmpty}
                 placeholder="Email"
               />
               <input
                 className="h-10 rounded-md w-[224px] border-2 border-solid border-slate-400 pl-2 font-mono "
                 type="password"
+                onChange={isPasswordEmpty}
                 placeholder="Password"
               />
               <button
                 className={
-                  "bg-blue-400 h-10 rounded-md text-white font cursor-pointer"
+                  isEmpty
+                    ? "bg-blue-400 h-10 rounded-md text-white font cursor-pointer"
+                    : "bg-blue-600 h-10 rounded-md text-white font cursor-pointer"
                 }
               >
                 SignIn

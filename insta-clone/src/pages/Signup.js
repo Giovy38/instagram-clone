@@ -1,7 +1,70 @@
 import logo from "../img/writeLogo.jpg";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Signup = () => {
+  const [emailEmpty, setEmailEmpty] = useState("");
+  const [nameEmpty, setNameEmpty] = useState("");
+  const [userEmpty, setUserEmpty] = useState("");
+  const [passwordEmpty, setPasswordEmpty] = useState("");
+  const [isEmpty, setIsEmpty] = useState(true);
+
+  const isEmailEmpty = (e) => {
+    setEmailEmpty(e.target.value);
+    if (
+      emailEmpty !== "" &&
+      nameEmpty !== "" &&
+      userEmpty !== "" &&
+      passwordEmpty !== ""
+    ) {
+      setIsEmpty(false);
+    } else {
+      setIsEmpty(true);
+    }
+  };
+
+  const isNameEmpty = (e) => {
+    setNameEmpty(e.target.value);
+    if (
+      emailEmpty !== "" &&
+      nameEmpty !== "" &&
+      userEmpty !== "" &&
+      passwordEmpty !== ""
+    ) {
+      setIsEmpty(false);
+    } else {
+      setIsEmpty(true);
+    }
+  };
+
+  const isUserEmpty = (e) => {
+    setUserEmpty(e.target.value);
+    if (
+      emailEmpty !== "" &&
+      nameEmpty !== "" &&
+      userEmpty !== "" &&
+      passwordEmpty !== ""
+    ) {
+      setIsEmpty(false);
+    } else {
+      setIsEmpty(true);
+    }
+  };
+
+  const isPasswordEmpty = (e) => {
+    setPasswordEmpty(e.target.value);
+    if (
+      emailEmpty !== "" &&
+      nameEmpty !== "" &&
+      userEmpty !== "" &&
+      passwordEmpty !== ""
+    ) {
+      setIsEmpty(false);
+    } else {
+      setIsEmpty(true);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center">
       {/* SIGNUP DIV */}
@@ -18,21 +81,25 @@ const Signup = () => {
             className="border-2 border-slate-400 border-solid bg-slate-100 h-10 p-2 w-full"
             type="email"
             placeholder="Email"
+            onChange={isEmailEmpty}
           />
           <input
             className="border-2 border-slate-400 border-solid bg-slate-100 h-10 p-2 w-full"
             type="text"
             placeholder="Nome e Cognome"
+            onChange={isNameEmpty}
           />
           <input
             className="border-2 border-slate-400 border-solid bg-slate-100 h-10 p-2 w-full"
             type="text"
             placeholder="Nome Utente"
+            onChange={isUserEmpty}
           />
           <input
             className="border-2 border-slate-400 border-solid bg-slate-100 h-10 p-2 w-full"
             type="password"
             placeholder="Password"
+            onChange={isPasswordEmpty}
           />
 
           <p className="text-center text-slate-400 mb-5">
@@ -73,7 +140,9 @@ const Signup = () => {
 
           <button
             className={
-              "bg-blue-400 h-10 rounded-md text-white font cursor-pointer w-full mb-5"
+              isEmpty
+                ? "bg-blue-400 h-10 rounded-md text-white font cursor-pointer w-full mb-5"
+                : "bg-blue-600 h-10 rounded-md text-white font cursor-pointer w-full mb-5"
             }
           >
             SignUp
