@@ -103,7 +103,7 @@ const Post = ({ userProfile, postImg, description }) => {
           className={
             isCommentEmpty
               ? "font-bold text-blue-200"
-              : "font-bold text-blue-400"
+              : "font-bold text-blue-400 cursor-pointer"
           }
         >
           Pubblica
