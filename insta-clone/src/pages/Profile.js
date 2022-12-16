@@ -9,6 +9,7 @@ import {
   faBookmark,
   faHeart,
   faCircleXmark,
+  faCamera,
 } from "@fortawesome/free-solid-svg-icons";
 import MyPost from "../components/MyPost";
 import myPostImg from "../img/tomAndChrisHemsw.jpg";
@@ -33,14 +34,26 @@ const Profile = () => {
 
         <div>
           <ProfileImg profileImg={profileImg} width={"w-16"} heigh={"h-16"} />
-          <FontAwesomeIcon
-            className="text-red-700"
-            size="1x"
-            icon={faCircleXmark}
-          />{" "}
-          <Link to="/signin">
-            <span className="text-xs">Logout</span>
-          </Link>
+          <div>
+            <FontAwesomeIcon
+              className="text-slate-500"
+              size="1x"
+              icon={faCamera}
+            />{" "}
+            <Link to="/change-photo">
+              <span className="text-xs">Change</span>
+            </Link>
+          </div>
+          <div>
+            <FontAwesomeIcon
+              className="text-red-700"
+              size="1x"
+              icon={faCircleXmark}
+            />{" "}
+            <Link to="/signin">
+              <span className="text-xs">Logout</span>
+            </Link>
+          </div>
         </div>
 
         {/* DIV WITH NICK AND USER INFO */}

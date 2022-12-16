@@ -81,7 +81,7 @@ const Signup = () => {
         </form>
       </div>
       {/* SINGIN DIV */}
-      <div className="border-2 border-slate-300 w-full max-w-[300px] m-3 mb-5 flex items-center justify-center h-10 p-5 tablet-n:max-w-[500px]">
+      <div className="border-2 border-slate-300 w-full max-w-[300px] m-3 mb-5 flex items-center justify-center p-5 tablet-n:max-w-[500px]">
         <h4>
           Hai un account?{" "}
           <Link to="/signin">
