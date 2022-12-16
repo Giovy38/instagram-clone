@@ -40,6 +40,7 @@ const Navbar = () => {
           className="w-20 tablet-n:w-[8rem] cursor-pointer"
           src={logo}
           alt="logo-not-found"
+          onClick={() => selectedPage("home")}
         />
       </Link>
 
