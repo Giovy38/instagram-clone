@@ -35,10 +35,12 @@ const Home = () => {
           description={
             "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel labore velit culpa nam explicabo ab alias quibusdam accusamus perspiciatis repudiandae quam nisi delectus, hic facilis? Nulla nihil numquam maxime soluta. Suscipit voluptatibus eveniet ex fuga eaque libero quis ea commodi quod, laboriosam porro, iure optio provident eum a perferendis nostrum?"
           }
+          verified={true}
         />
         <Post
           userProfile={userProfile}
           postImg={postImg2}
+          verified={true}
           description={
             "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel labore velit culpa nam explicabo ab alias quibusdam accusamus perspiciatis repudiandae quam nisi delectus, hic facilis? Nulla nihil numquam maxime soluta. Suscipit voluptatibus eveniet ex fuga eaque libero quis ea commodi quod, laboriosam porro, iure optio provident eum a perferendis nostrum?"
           }

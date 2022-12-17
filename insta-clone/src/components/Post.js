@@ -7,10 +7,11 @@ import {
   faPaperPlane,
   faBookmark,
   faFaceSmile,
+  faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-const Post = ({ userProfile, postImg, description }) => {
+const Post = ({ userProfile, postImg, description, verified = false }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [isCommentEmpty, setIsCommentEmpty] = useState(true);
@@ -40,7 +41,16 @@ const Post = ({ userProfile, postImg, description }) => {
       {/* FLEX DIV TO ORIZZONTAL OBJ */}
       <div className="flex items-center justify-start pl-3 pt-1">
         <ProfileImg profileImg={profileImg} width={"w-10"} heigh={"h-10"} />
-        <h3 className="ml-2 font-bold">{userProfile}</h3>
+        <div className="flex items-center gap-1">
+          <h3 className="ml-2 font-bold">{userProfile}</h3>
+          {verified ? (
+            <FontAwesomeIcon
+              className="text-blue-400"
+              size="1x"
+              icon={faCircleCheck}
+            />
+          ) : null}
+        </div>
       </div>
       {/* IMG OF POST */}
       <div className="max-h-[222px]  overflow-hidden">
