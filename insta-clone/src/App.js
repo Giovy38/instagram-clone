@@ -4,7 +4,7 @@ import SavedPost from "./pages/SavedPost";
 import LikedPost from "./pages/LikedPost";
 import CreateNewPost from "./pages/CreateNewPost";
 import Signin from "./pages/Signin";
-import Stories from "./pages/Stories";
+import StoriesPage from "./pages/StoriesPage";
 import Signup from "./pages/Signup";
 import ChangeProfilePhoto from "./pages/ChangeProfilePhoto";
 import Profile from "./pages/Profile";
@@ -22,7 +22,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/stories" element={<Stories />} />
+        <Route path="/stories" element={<StoriesPage />} />
         <Route path="/change-profile-photo" element={<ChangeProfilePhoto />} />
       </Routes>
     </div>
