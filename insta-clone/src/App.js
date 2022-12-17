@@ -6,6 +6,7 @@ import CreateNewPost from "./pages/CreateNewPost";
 import Signin from "./pages/Signin";
 import Stories from "./pages/Stories";
 import Signup from "./pages/Signup";
+import ChangeProfilePhoto from "./pages/ChangeProfilePhoto";
 import Profile from "./pages/Profile";
 import { Route, Routes } from "react-router-dom";
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/stories" element={<Stories />} />
+        <Route path="/change-profile-photo" element={<ChangeProfilePhoto />} />
       </Routes>
     </div>
   );

@@ -2,6 +2,7 @@ import Post from "../components/Post";
 import StoriesSlider from "../components/StoriesSlider";
 import ProfileImg from "../components/ProfileImg";
 import profileImg from "../img/tomHolland.jpg";
+import { Link } from "react-router-dom";
 import postImg from "../img/tomAndRobert.jpg";
 import postImg2 from "../img/tomAndZendaya.jpg";
 import postImg3 from "../img/tomAndChrisPatt.jpg";
@@ -17,7 +18,9 @@ const Home = () => {
         <StoriesSlider />
         {/* PROFILE PICTURES */}
         <div className="hidden tablet-n:flex tablet-n:ml-10 ">
-          <ProfileImg profileImg={profileImg} width={"w-12"} heigh={"h-12"} />
+          <Link to="/profile">
+            <ProfileImg profileImg={profileImg} width={"w-12"} heigh={"h-12"} />
+          </Link>
           <div className="ml-2">
             <h3 className=" font-bold">User Profile</h3>
             <p className=" text-slate-500">Name</p>

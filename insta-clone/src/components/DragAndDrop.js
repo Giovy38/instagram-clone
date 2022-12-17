@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-const DragAndDrop = () => {
+const DragAndDrop = ({ isPost, buttonText }) => {
   const [files, setFiles] = useState([]);
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -26,14 +26,19 @@ const DragAndDrop = () => {
           alt="preview"
         />
         <form className="w-full flex flex-col items-center" action="">
-          <textarea
-            className="rounded-xl mt-2 p-2 resize-none w-full bg-slate-100"
-            name="description"
-            placeholder="Post description"
-            cols="33"
-            rows="3"
-          ></textarea>
-          <button className="bg-blue-400 p-2 rounded-md w-24 mt-2">Post</button>
+          {isPost ? (
+            <textarea
+              className="rounded-xl mt-2 p-2 resize-none w-full bg-slate-100"
+              name="description"
+              placeholder="Post description"
+              cols="33"
+              rows="3"
+            ></textarea>
+          ) : null}
+
+          <button className="bg-blue-400 p-2 rounded-md min-w-[96px] w-auto  mt-2">
+            {buttonText}
+          </button>
         </form>
       </div>
     </div>

@@ -40,7 +40,7 @@ const Profile = () => {
               size="1x"
               icon={faCamera}
             />{" "}
-            <Link to="/change-photo">
+            <Link to="/change-profile-photo">
               <span className="text-xs">Change</span>
             </Link>
           </div>
