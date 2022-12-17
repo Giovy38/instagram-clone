@@ -1,5 +1,6 @@
 import Stories from "react-insta-stories";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import logo from "../img/writeLogoNoBg.png";
 import {
   faHeart,
   faPaperPlane,
@@ -9,13 +10,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const StoriesPage = () => {
-  // const stories = [
-  //   "https://www.optimagazine.com/wp-content/uploads/2021/07/Robert-Downey-Jr.-e1626377309135.jpg",
-  //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8swdch_NcWn2kaDDvRzacDYQFKAatF3XpDg&usqp=CAU",
-  //   "https://redcapes.it/wp-content/uploads/2019/03/image1.jpeg",
-  //   "https://www.martinasfumetti.it/103145-large_default/DVD-Iron-Man-2-edizione-speciale-2-dvd-slip-case-Robert-Downey-Jr--NUOVO-Gd55.jpg",
-  // ];
-
   const stories = [
     {
       url: "https://www.optimagazine.com/wp-content/uploads/2021/07/Robert-Downey-Jr.-e1626377309135.jpg",
@@ -71,7 +65,11 @@ const StoriesPage = () => {
 
   return (
     <div className="flex items-center justify-start flex-col mt-2 bg-[#111111] h-[100vh]">
-      <div className=" w-full flex items-end justify-end pr-4 pt-2">
+      <div className=" w-full flex items-center justify-between pr-4 pt-2">
+        <Link to="/">
+          <img className="h-10 pl-3" src={logo} alt="" />
+        </Link>
+
         <Link to="/">
           <FontAwesomeIcon
             className="text-white h-6 w-6"
