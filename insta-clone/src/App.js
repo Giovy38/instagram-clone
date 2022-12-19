@@ -7,6 +7,7 @@ import Signin from "./pages/Signin";
 import StoriesPage from "./pages/StoriesPage";
 import Signup from "./pages/Signup";
 import ChangeProfilePhoto from "./pages/ChangeProfilePhoto";
+import Logout from "./pages/Logout";
 import Profile from "./pages/Profile";
 import { Route, Routes } from "react-router-dom";
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/stories" element={<StoriesPage />} />
         <Route path="/change-profile-photo" element={<ChangeProfilePhoto />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </div>
   );

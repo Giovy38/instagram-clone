@@ -50,7 +50,7 @@ const Profile = () => {
               size="1x"
               icon={faCircleXmark}
             />{" "}
-            <Link to="/signin">
+            <Link to="/logout">
               <span className="text-xs">Logout</span>
             </Link>
           </div>

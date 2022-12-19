@@ -2,11 +2,18 @@ import logo from "../img/writeLogo.jpg";
 import video from "../img/loginVid.gif";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { auth } from "../store/action/handleAuth";
+import { Navigate } from "react-router-dom";
 
 const Signin = () => {
   const [emailEmpty, setEmailEmpty] = useState("");
   const [passwordEmpty, setPasswordEmpty] = useState("");
   const [isEmpty, setIsEmpty] = useState(true);
+
+  const token = useSelector((state) => state.authReducer.token);
+
+  const dispatch = useDispatch();
 
   const isEmailEmpty = (e) => {
     setEmailEmpty(e.target.value);
@@ -26,8 +33,23 @@ const Signin = () => {
     }
   };
 
+  const isSignUp = false;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(auth(emailEmpty, passwordEmpty, isSignUp));
+    setEmailEmpty("");
+    setPasswordEmpty("");
+  };
+
+  let shouldRedirect = null;
+  if (token) {
+    shouldRedirect = <Navigate replace to="/" />;
+  }
+
   return (
     <div className="flex items-center justify-center">
+      {shouldRedirect}
       {/* RIGHT VIDEO DIV */}
       <div className="overflow-hidden w-[300px] h-[500px] justify-center items-center hidden tablet-n:flex">
         <img className="" src={video} alt="" />
@@ -52,6 +74,7 @@ const Signin = () => {
                 placeholder="Password"
               />
               <button
+                onClick={handleSubmit}
                 className={
                   isEmpty
                     ? "bg-blue-400 h-10 rounded-md text-white font cursor-pointer"

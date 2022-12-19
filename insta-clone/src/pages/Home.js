@@ -2,6 +2,7 @@ import Post from "../components/Post";
 import StoriesSlider from "../components/StoriesSlider";
 import ProfileImg from "../components/ProfileImg";
 import profileImg from "../img/tomHolland.jpg";
+import LoadingScreen from "../components/LoadingScreen";
 import { Link } from "react-router-dom";
 import postImg from "../img/tomAndRobert.jpg";
 import postImg2 from "../img/tomAndZendaya.jpg";
@@ -13,6 +14,8 @@ const Home = () => {
 
   return (
     <div>
+      {/* if loading = true  */}
+      {/* <LoadingScreen /> */}
       {/* STORIES SLIDER AND PROFILE PICTURES */}
       <div className="flex items-center justify-center tablet-n:pl-40">
         <StoriesSlider />

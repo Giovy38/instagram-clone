@@ -1,6 +1,8 @@
 import logo from "../img/writeLogo.jpg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { auth } from "../store/action/handleAuth";
 
 const Signup = () => {
   const [emailEmpty, setEmailEmpty] = useState("");
@@ -9,7 +11,14 @@ const Signup = () => {
   const [passwordEmpty, setPasswordEmpty] = useState("");
   const [isEmpty, setIsEmpty] = useState(true);
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userNickname, setUserNickname] = useState("");
+
+  const dispatch = useDispatch();
+
   const isEmailEmpty = (e) => {
+    setEmail(e.target.value);
     setEmailEmpty(e.target.value);
     if (
       emailEmpty !== "" &&
@@ -38,6 +47,7 @@ const Signup = () => {
   };
 
   const isUserEmpty = (e) => {
+    setUserNickname(e.target.value);
     setUserEmpty(e.target.value);
     if (
       emailEmpty !== "" &&
@@ -52,6 +62,7 @@ const Signup = () => {
   };
 
   const isPasswordEmpty = (e) => {
+    setPassword(e.target.value);
     setPasswordEmpty(e.target.value);
     if (
       emailEmpty !== "" &&
@@ -63,6 +74,16 @@ const Signup = () => {
     } else {
       setIsEmpty(true);
     }
+  };
+
+  const isSignUp = true;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(auth(email, password, isSignUp, userNickname));
+    setEmail("");
+    setPassword("");
+    console.log(email, password, userNickname);
   };
 
   return (
@@ -139,6 +160,7 @@ const Signup = () => {
           </p>
 
           <button
+            onClick={handleSubmit}
             className={
               isEmpty
                 ? "bg-blue-400 h-10 rounded-md text-white font cursor-pointer w-full mb-5"
