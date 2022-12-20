@@ -5,7 +5,7 @@ const AUTH_SUCCESS = "AUTH_SUCCESS";
 const AUTH_FAIL = "AUTH_FAIL";
 const LOGOUT = "LOGOUT";
 
-export const auth = (email, password, isSignUp, userNickname) => {
+export const auth = (email, password, isSignUp) => {
   return async (dispatch) => {
     dispatch(authStart());
     try {
@@ -19,8 +19,8 @@ export const auth = (email, password, isSignUp, userNickname) => {
         email,
         password,
         returnSecureToken: true,
-        userNickname,
       });
+
       console.log(response.data);
       localStorage.setItem("token", response.data.idToken);
       localStorage.setItem("userId", response.data.localId);
@@ -43,7 +43,6 @@ export const authSuccess = (userData) => {
     type: AUTH_SUCCESS,
     token: userData.idToken,
     userId: userData.localId,
-    userNickname: userData.userNickname,
   };
 };
 

@@ -31,6 +31,8 @@ const Navbar = () => {
       : setProfileClicked(false);
   };
 
+  const token = localStorage.getItem("token");
+
   return (
     // NAVBAR DIV
     <div className="items-center text-center flex justify-around border-b-2 border-slate-300 border-solid ">
@@ -64,7 +66,6 @@ const Navbar = () => {
             icon={faHouse}
           />
         </Link>
-
         <Link to="/create-new-post">
           <FontAwesomeIcon
             onClick={() => selectedPage("create")}
@@ -77,7 +78,6 @@ const Navbar = () => {
             icon={faPlus}
           />
         </Link>
-
         <Link to="/liked-post">
           <FontAwesomeIcon
             onClick={() => selectedPage("liked")}
@@ -90,7 +90,6 @@ const Navbar = () => {
             icon={faHeart}
           />
         </Link>
-
         <Link to="/saved-post">
           <FontAwesomeIcon
             onClick={() => selectedPage("saved")}
@@ -103,18 +102,19 @@ const Navbar = () => {
             icon={faBookmark}
           />
         </Link>
-
-        <Link onClick={() => selectedPage("profile")} to="/profile">
-          <div
-            className={
-              profileClicked
-                ? "border-2 border-solid border-black p-0.5 rounded-full"
-                : null
-            }
-          >
-            <ProfileImg profileImg={profileImg} width={"w-7"} heigh={"h-7"} />
-          </div>
-        </Link>
+        {token ? (
+          <Link onClick={() => selectedPage("profile")} to="/profile">
+            <div
+              className={
+                profileClicked
+                  ? "border-2 border-solid border-black p-0.5 rounded-full"
+                  : null
+              }
+            >
+              <ProfileImg profileImg={profileImg} width={"w-7"} heigh={"h-7"} />
+            </div>
+          </Link>
+        ) : null}
       </div>
     </div>
   );

@@ -2,20 +2,20 @@ import Post from "../components/Post";
 import StoriesSlider from "../components/StoriesSlider";
 import ProfileImg from "../components/ProfileImg";
 import profileImg from "../img/tomHolland.jpg";
-import LoadingScreen from "../components/LoadingScreen";
 import { Link } from "react-router-dom";
 import postImg from "../img/tomAndRobert.jpg";
 import postImg2 from "../img/tomAndZendaya.jpg";
 import postImg3 from "../img/tomAndChrisPatt.jpg";
 import postImg4 from "../img/tom.jpg";
+import { Navigate } from "react-router-dom";
 
 const Home = () => {
   const userProfile = "Tom Holland";
+  const token = localStorage.getItem("token");
 
   return (
     <div>
-      {/* if loading = true  */}
-      {/* <LoadingScreen /> */}
+      {!token ? <Navigate replace to="/signin" /> : null}
       {/* STORIES SLIDER AND PROFILE PICTURES */}
       <div className="flex items-center justify-center tablet-n:pl-40">
         <StoriesSlider />

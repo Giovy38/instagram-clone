@@ -13,7 +13,6 @@ const Signup = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userNickname, setUserNickname] = useState("");
 
   const dispatch = useDispatch();
 
@@ -47,7 +46,6 @@ const Signup = () => {
   };
 
   const isUserEmpty = (e) => {
-    setUserNickname(e.target.value);
     setUserEmpty(e.target.value);
     if (
       emailEmpty !== "" &&
@@ -80,10 +78,10 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(auth(email, password, isSignUp, userNickname));
+    dispatch(auth(email, password, isSignUp));
     setEmail("");
     setPassword("");
-    console.log(email, password, userNickname);
+    console.log(email, password);
   };
 
   return (
