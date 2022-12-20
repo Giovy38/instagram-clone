@@ -16,7 +16,7 @@ const DragAndDrop = ({ isPost, buttonText }) => {
       Axios.post(
         `https://insta-clone-42ea1-default-rtdb.firebaseio.com/post.json`,
         {
-          poisId: uuidv4(),
+          postId: uuidv4(),
           postImgUrl: files[0].preview,
           postDescription: description,
         }

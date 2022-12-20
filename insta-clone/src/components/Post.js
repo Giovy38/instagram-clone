@@ -11,7 +11,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-const Post = ({ userProfile, postImg, description, verified = false }) => {
+const userProfile = "Tom Holland";
+
+const Post = ({ postImg, description, verified = true }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [isCommentEmpty, setIsCommentEmpty] = useState(true);
