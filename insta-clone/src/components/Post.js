@@ -1,5 +1,6 @@
 import ProfileImg from "./ProfileImg";
 import profileImg from "../img/tomHolland.jpg";
+import Axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -28,10 +29,34 @@ const Post = ({
   const handleLike = () => {
     !isLiked ? setLike(like + 1) : setLike(like - 1);
     setIsLiked((current) => !current);
+    fetchLikedPost();
+  };
+
+  const fetchLikedPost = () => {
+    try {
+      Axios.post(
+        `https://insta-clone-42ea1-default-rtdb.firebaseio.com/likedPost.json`,
+        { postImage: postImg }
+      );
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const fetchSavedPost = () => {
+    try {
+      Axios.post(
+        `https://insta-clone-42ea1-default-rtdb.firebaseio.com/savedPost.json`,
+        { postImage: postImg }
+      );
+    } catch (error) {
+      alert(error);
+    }
   };
 
   const handleSaved = () => {
     setIsSaved((current) => !current);
+    fetchSavedPost();
   };
 
   const handleCommentEmpty = (e) => {
