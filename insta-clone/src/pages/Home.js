@@ -1,17 +1,27 @@
-import Post from "../components/Post";
 import StoriesSlider from "../components/StoriesSlider";
 import ProfileImg from "../components/ProfileImg";
 import profileImg from "../img/tomHolland.jpg";
 import { Link } from "react-router-dom";
-import postImg from "../img/tomAndRobert.jpg";
-import postImg2 from "../img/tomAndZendaya.jpg";
-import postImg3 from "../img/tomAndChrisPatt.jpg";
-import postImg4 from "../img/tom.jpg";
+import Axios from "axios";
 import { Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import AllPosts from "../components/AllPosts";
 
 const Home = () => {
-  const userProfile = "Tom Holland";
   const token = localStorage.getItem("token");
+  const [data, setData] = useState("");
+
+  const getPost = async () => {
+    const response = await Axios.get(
+      "https://insta-clone-42ea1-default-rtdb.firebaseio.com/post.json"
+    );
+    console.log(response.data);
+    setData(response.data);
+  };
+
+  useEffect(() => {
+    getPost();
+  }, []);
 
   return (
     <div>
@@ -31,38 +41,9 @@ const Home = () => {
         </div>
       </div>
       {/* POST DIV */}
-      <div className="flex flex-col items-center justify-center tablet-n:justify-start">
-        <Post
-          userProfile={userProfile}
-          postImg={postImg}
-          description={
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel labore velit culpa nam explicabo ab alias quibusdam accusamus perspiciatis repudiandae quam nisi delectus, hic facilis? Nulla nihil numquam maxime soluta. Suscipit voluptatibus eveniet ex fuga eaque libero quis ea commodi quod, laboriosam porro, iure optio provident eum a perferendis nostrum?"
-          }
-          verified={true}
-        />
-        <Post
-          userProfile={userProfile}
-          postImg={postImg2}
-          verified={true}
-          description={
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel labore velit culpa nam explicabo ab alias quibusdam accusamus perspiciatis repudiandae quam nisi delectus, hic facilis? Nulla nihil numquam maxime soluta. Suscipit voluptatibus eveniet ex fuga eaque libero quis ea commodi quod, laboriosam porro, iure optio provident eum a perferendis nostrum?"
-          }
-        />
-        <Post
-          userProfile={userProfile}
-          postImg={postImg3}
-          description={
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, tempora?"
-          }
-        />
 
-        <Post
-          userProfile={userProfile}
-          postImg={postImg4}
-          description={
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, tempora?"
-          }
-        />
+      <div className="flex flex-col items-center justify-center tablet-n:justify-start">
+        <AllPosts data={data} />
       </div>
     </div>
   );
