@@ -86,6 +86,34 @@ const Home = () => {
             "https://nationaltoday.com/wp-content/uploads/2022/10/456840961-min.jpg"
           }
         />
+        {/* fake post 4  */}
+
+        <Post
+          postImg={
+            "https://people.com/thmb/ulWD1v7Dr8rUNk4_RLQlTjezTA8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(731x379:733x381)/tom-hiddleston-chris-hemsworth-tout-830069ca94ad4c48a12d6f069fd40b95.jpg"
+          }
+          description={
+            "This is so unlike you, brother. So clandestine. Are you sure you wouldn't rather just punch your way out?"
+          }
+          verified={true}
+          userProfiles={"tom hiddleston"}
+          profileImag={
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Tom_Hiddleston_%2836109110291%29_%28cropped%29.jpg/1200px-Tom_Hiddleston_%2836109110291%29_%28cropped%29.jpg"
+          }
+        />
+        {/* fake post 5  */}
+
+        <Post
+          postImg={
+            "https://media.tenor.com/jLGgaovcz_MAAAAC/kledi-non-provare-a-imitare-billy-ballo.gif"
+          }
+          description={"Non provare ad imitare Billy Ballo, sii te stesso!"}
+          verified={false}
+          userProfiles={"NotImitateBillyBalloOfficial"}
+          profileImag={
+            "https://m.media-amazon.com/images/M/MV5BYWU4MmExMjctMGFiOC00ZjljLTk3OTItODdlMGJhM2Q0N2NmXkEyXkFqcGdeQXVyMzQ0NTk5NzU@._V1_UY1200_CR22,0,630,1200_AL_.jpg"
+          }
+        />
       </div>
     </div>
   );
