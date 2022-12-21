@@ -42,6 +42,7 @@ const DragAndDrop = ({ isPost, buttonText }) => {
           })
         )
       );
+      setIsPosted(false);
     },
   });
 
