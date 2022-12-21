@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 import { v4 as uuidv4 } from "uuid";
 
 const DragAndDrop = ({ isPost, buttonText }) => {
   const [files, setFiles] = useState([]);
   const [description, setDescription] = useState("");
-
-  const navigate = useNavigate();
 
   const createPost = (e) => {
     e.preventDefault();
@@ -21,8 +19,6 @@ const DragAndDrop = ({ isPost, buttonText }) => {
           postDescription: description,
         }
       );
-
-      navigate("/");
     } catch (error) {
       alert(error);
     }

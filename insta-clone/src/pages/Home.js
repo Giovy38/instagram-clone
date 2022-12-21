@@ -15,7 +15,6 @@ const Home = () => {
     const response = await Axios.get(
       "https://insta-clone-42ea1-default-rtdb.firebaseio.com/post.json"
     );
-    console.log(response.data);
     setData(response.data);
   };
 

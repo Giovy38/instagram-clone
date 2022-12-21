@@ -1,7 +1,6 @@
 import Post from "./Post";
 
 const AllPosts = (data) => {
-  console.log("data da allposts", data.data);
   const fetchPost = () => {
     const myPosts = [];
     for (let key in data.data) {
@@ -12,7 +11,7 @@ const AllPosts = (data) => {
         verified: true,
       });
     }
-    console.log(myPosts);
+
     const reversePost = [...myPosts].reverse();
 
     return reversePost.map((post) => {
