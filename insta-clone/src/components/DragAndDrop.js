@@ -7,9 +7,11 @@ import { v4 as uuidv4 } from "uuid";
 const DragAndDrop = ({ isPost, buttonText }) => {
   const [files, setFiles] = useState([]);
   const [description, setDescription] = useState("");
+  const [isPosted, setIsPosted] = useState(false);
 
   const createPost = (e) => {
     e.preventDefault();
+    setIsPosted(false);
     try {
       Axios.post(
         `https://insta-clone-42ea1-default-rtdb.firebaseio.com/post.json`,
@@ -19,12 +21,11 @@ const DragAndDrop = ({ isPost, buttonText }) => {
           postDescription: description,
         }
       );
+      setIsPosted(true);
     } catch (error) {
       alert(error);
+      setIsPosted(false);
     }
-
-    console.log(files[0].preview);
-    console.log(description);
   };
 
   const createDescription = (e) => {
@@ -46,32 +47,38 @@ const DragAndDrop = ({ isPost, buttonText }) => {
 
   const image = files.map((file) => (
     <div key={file.name}>
-      <div className="flex flex-col justify-center items-center ">
-        <img
-          className="max-w-[140px] max-h-[140px] mb-1"
-          src={file.preview}
-          alt="preview"
-        />
-        <form className="w-full flex flex-col items-center" action="">
-          {isPost ? (
-            <textarea
-              className="rounded-xl mt-2 p-2 resize-none w-full bg-slate-100"
-              name="description"
-              placeholder="Post description"
-              onChange={createDescription}
-              cols="33"
-              rows="3"
-            ></textarea>
-          ) : null}
+      {!isPosted ? (
+        <div className="flex flex-col justify-center items-center ">
+          <img
+            className="max-w-[140px] max-h-[140px] mb-1"
+            src={file.preview}
+            alt="preview"
+          />
+          <form className="w-full flex flex-col items-center" action="">
+            {isPost ? (
+              <textarea
+                className="rounded-xl mt-2 p-2 resize-none w-full bg-slate-100"
+                name="description"
+                placeholder="Post description"
+                onChange={createDescription}
+                cols="33"
+                rows="3"
+              ></textarea>
+            ) : null}
 
-          <button
-            onClick={createPost}
-            className="bg-blue-400 p-2 rounded-md min-w-[96px] w-auto  mt-2"
-          >
-            {buttonText}
-          </button>
-        </form>
-      </div>
+            <button
+              onClick={createPost}
+              className="bg-blue-400 p-2 rounded-md min-w-[96px] w-auto  mt-2"
+            >
+              {buttonText}
+            </button>
+          </form>
+        </div>
+      ) : (
+        <p className="text-green-500 text-center font-bold">
+          Post caricato con successo, vai alla Home per visualizzarlo
+        </p>
+      )}
     </div>
   ));
 
