@@ -13,7 +13,13 @@ import { useState } from "react";
 
 const userProfile = "Tom Holland";
 
-const Post = ({ postImg, description, verified = true }) => {
+const Post = ({
+  postImg,
+  description,
+  verified = true,
+  userProfiles = userProfile,
+  profileImag = profileImg,
+}) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [isCommentEmpty, setIsCommentEmpty] = useState(true);
@@ -42,9 +48,9 @@ const Post = ({ postImg, description, verified = true }) => {
     <div className="mt-6 mb-2 border-2 border-solid border-slate-400 rounded-md w-full max-w-[300px] max-h-[75vh] pb-2">
       {/* FLEX DIV TO ORIZZONTAL OBJ */}
       <div className="flex items-center justify-start pl-3 pt-1">
-        <ProfileImg profileImg={profileImg} width={"w-10"} heigh={"h-10"} />
+        <ProfileImg profileImg={profileImag} width={"w-10"} heigh={"h-10"} />
         <div className="flex items-center gap-1">
-          <h3 className="ml-2 font-bold">{userProfile}</h3>
+          <h3 className="ml-2 font-bold">{userProfiles}</h3>
           {verified ? (
             <FontAwesomeIcon
               className="text-blue-400"
@@ -95,7 +101,7 @@ const Post = ({ postImg, description, verified = true }) => {
         Piace a <span className="font-bold">{like}</span> persone{" "}
       </p>
       <p className="ml-3 text-ellipsis line-clamp-5">
-        <span className="font-bold">{userProfile}</span>:{" "}
+        <span className="font-bold">{userProfiles}</span>:{" "}
         <span>{description}</span>
       </p>
       {/* DIV COMMENT */}
