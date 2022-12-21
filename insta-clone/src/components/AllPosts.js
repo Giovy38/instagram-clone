@@ -1,5 +1,4 @@
 import Post from "./Post";
-import Axios from "axios";
 
 const AllPosts = (data) => {
   console.log("data da allposts", data.data);
@@ -14,8 +13,9 @@ const AllPosts = (data) => {
       });
     }
     console.log(myPosts);
+    const reversePost = [...myPosts].reverse();
 
-    return myPosts.map((post) => {
+    return reversePost.map((post) => {
       return (
         <div key={post.postId}>
           <Post
