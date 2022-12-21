@@ -23,7 +23,6 @@ const Profile = () => {
       "https://insta-clone-42ea1-default-rtdb.firebaseio.com/post.json"
     );
     setData(response);
-    console.log(response.data);
   };
 
   const fetchPost = () => {
