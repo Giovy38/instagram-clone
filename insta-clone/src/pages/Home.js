@@ -13,10 +13,14 @@ const Home = () => {
   const [data, setData] = useState("");
 
   const getPost = async () => {
-    const response = await Axios.get(
-      "https://insta-clone-42ea1-default-rtdb.firebaseio.com/post.json"
-    );
-    setData(response.data);
+    try {
+      const response = await Axios.get(
+        "https://insta-clone-42ea1-default-rtdb.firebaseio.com/post.json"
+      );
+      setData(response.data);
+    } catch (error) {
+      alert(error);
+    }
   };
 
   useEffect(() => {
