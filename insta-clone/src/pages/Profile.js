@@ -1,5 +1,7 @@
 import ProfileImg from "../components/ProfileImg";
 import profileImg from "../img/tomHolland.jpg";
+import { useState, useEffect } from "react";
+import Axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import {
@@ -12,12 +14,44 @@ import {
   faCamera,
 } from "@fortawesome/free-solid-svg-icons";
 import MyPost from "../components/MyPost";
-import myPostImg from "../img/tomAndChrisHemsw.jpg";
-import myPostImg2 from "../img/tomAndElisabeth.jpg";
-import myPostImg3 from "../img/tomAndAndrew.jpg";
-import myPostImg4 from "../img/tom.jpg";
 
 const Profile = () => {
+  const [data, setData] = useState("");
+
+  const getPost = async () => {
+    const response = await Axios.get(
+      "https://insta-clone-42ea1-default-rtdb.firebaseio.com/post.json"
+    );
+    setData(response);
+    console.log(response.data);
+  };
+
+  const fetchPost = () => {
+    const myPosts = [];
+    for (let key in data.data) {
+      myPosts.push({
+        postId: data.data[key].postId,
+        postImg: data.data[key].postImgUrl,
+        description: data.data[key].postDescription,
+        verified: true,
+      });
+    }
+
+    const reversePost = [...myPosts].reverse();
+
+    return reversePost.map((post) => {
+      return (
+        <div key={post.postId}>
+          <MyPost className="flex-[50%]" myPostImg={post.postImg} />
+        </div>
+      );
+    });
+  };
+
+  useEffect(() => {
+    getPost();
+  }, []);
+
   let userNick = "Tom Holland2013";
   let name = "Tom Holland";
   let post = 0,
@@ -119,10 +153,7 @@ const Profile = () => {
         </Link>
       </div>
       <div className=" flex items-center justify-center flex-col tablet-n:flex-row tablet-n:flex-wrap tablet-n:gap-3 laptop-n:justify-start laptop-n:ml-12 ">
-        <MyPost className="flex-[50%]" myPostImg={myPostImg} />
-        <MyPost className="flex-[50%]" myPostImg={myPostImg2} />
-        <MyPost className="flex-[50%]" myPostImg={myPostImg3} />
-        <MyPost className="flex-[50%]" myPostImg={myPostImg4} />
+        {fetchPost()}
       </div>
     </div>
   );
