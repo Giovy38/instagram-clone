@@ -12,7 +12,7 @@ const CreateNewPost = () => {
           <img className="w-24" src={image} alt="" />
         </div>
         <div className="h-auto">
-          <DragAndDrop isPost={true} buttonText={"Post"} />
+          <DragAndDrop />
         </div>
       </div>
     </div>

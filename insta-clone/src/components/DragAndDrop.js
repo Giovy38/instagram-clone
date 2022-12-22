@@ -4,7 +4,7 @@ import Axios from "axios";
 
 import { v4 as uuidv4 } from "uuid";
 
-const DragAndDrop = ({ isPost, buttonText }) => {
+const DragAndDrop = () => {
   const [files, setFiles] = useState([]);
   const [description, setDescription] = useState("");
   const [isPosted, setIsPosted] = useState(false);
@@ -56,22 +56,20 @@ const DragAndDrop = ({ isPost, buttonText }) => {
             alt="preview"
           />
           <form className="w-full flex flex-col items-center" action="">
-            {isPost ? (
-              <textarea
-                className="rounded-xl mt-2 p-2 resize-none w-full bg-slate-100"
-                name="description"
-                placeholder="Post description"
-                onChange={createDescription}
-                cols="33"
-                rows="3"
-              ></textarea>
-            ) : null}
+            <textarea
+              className="rounded-xl mt-2 p-2 resize-none w-full bg-slate-100"
+              name="description"
+              placeholder="Post description"
+              onChange={createDescription}
+              cols="33"
+              rows="3"
+            ></textarea>
 
             <button
               onClick={createPost}
               className="bg-blue-400 p-2 rounded-md min-w-[96px] w-auto  mt-2"
             >
-              {buttonText}
+              Post
             </button>
           </form>
         </div>
