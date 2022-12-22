@@ -42,6 +42,7 @@ const SavedPost = () => {
 
   return (
     <div className=" flex items-center justify-center flex-col tablet-n:flex-row tablet-n:flex-wrap tablet-n:gap-3 laptop-n:justify-start laptop-n:ml-12 ">
+      <h2 className="text-center w-full text-2xl font-bold">Post salvati:</h2>
       {fetchLiked()}
     </div>
   );

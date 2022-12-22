@@ -77,7 +77,8 @@ const DragAndDrop = ({ isPost, buttonText }) => {
         </div>
       ) : (
         <p className="text-green-500 text-center font-bold">
-          Post caricato con successo, vai alla Home per visualizzarlo
+          Post caricato con successo, vai alla Home o al Profilo per
+          visualizzarlo
         </p>
       )}
     </div>
