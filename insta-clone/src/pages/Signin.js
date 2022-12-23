@@ -12,6 +12,7 @@ const Signin = () => {
   const [isEmpty, setIsEmpty] = useState(true);
 
   const token = useSelector((state) => state.authReducer.token);
+  const error = useSelector((state) => state.authReducer.error);
 
   const dispatch = useDispatch();
 
@@ -73,6 +74,9 @@ const Signin = () => {
                 onChange={isPasswordEmpty}
                 placeholder="Password"
               />
+              {error ? (
+                <p className="text-red-600">Username o password errati</p>
+              ) : null}
               <button
                 onClick={handleSubmit}
                 className={

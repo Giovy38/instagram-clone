@@ -56,6 +56,7 @@ export const authFail = (error) => {
 export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("userId");
+  localStorage.removeItem("selectedIcon");
   return {
     type: LOGOUT,
   };

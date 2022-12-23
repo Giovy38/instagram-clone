@@ -1,8 +1,8 @@
 import logo from "../img/writeLogo.jpg";
 import ProfileImg from "./ProfileImg";
+import { useState, useEffect } from "react";
 import profileImg from "../img/tomHolland.jpg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -12,23 +12,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
-  const [homeClicked, setHomeClicked] = useState(true);
-  const [likedClicked, setLikedClicked] = useState(false);
-  const [savedClicked, setSavedClicked] = useState(false);
-  const [createPostClicked, setCreatePostClicked] = useState(false);
-  const [profileClicked, setProfileClicked] = useState(false);
+  const [iconSetted, setIconSetted] = useState("home");
 
-  const selectedPage = (selectedIcon) => {
-    // setHomeClicked(true);
-    selectedIcon === "home" ? setHomeClicked(true) : setHomeClicked(false);
-    selectedIcon === "liked" ? setLikedClicked(true) : setLikedClicked(false);
-    selectedIcon === "saved" ? setSavedClicked(true) : setSavedClicked(false);
-    selectedIcon === "create"
-      ? setCreatePostClicked(true)
-      : setCreatePostClicked(false);
-    selectedIcon === "profile"
-      ? setProfileClicked(true)
-      : setProfileClicked(false);
+  useEffect(() => {
+    setIconSetted(localStorage.getItem("selectedIcon"));
+    if (localStorage.getItem("selectedIcon") === null) {
+      setIconSetted("home");
+    }
+  }, []);
+
+  const setPage = (selection) => {
+    localStorage.setItem("selectedIcon", selection);
+    setIconSetted(localStorage.getItem("selectedIcon"));
   };
 
   const token = localStorage.getItem("token");
@@ -42,7 +37,7 @@ const Navbar = () => {
           className="w-20 tablet-n:w-[8rem] cursor-pointer"
           src={logo}
           alt="logo-not-found"
-          onClick={() => selectedPage("home")}
+          onClick={() => setPage("home")}
         />
       </Link>
 
@@ -56,9 +51,9 @@ const Navbar = () => {
       <div className="flex w-40 justify-around items-center tablet-n:w-48">
         <Link to="/">
           <FontAwesomeIcon
-            onClick={() => selectedPage("home")}
+            onClick={() => setPage("home")}
             className={
-              homeClicked
+              iconSetted === "home"
                 ? "cursor-pointer text-black w-7 "
                 : "text-slate-300 w-7 cursor-pointer"
             }
@@ -68,9 +63,9 @@ const Navbar = () => {
         </Link>
         <Link to="/create-new-post">
           <FontAwesomeIcon
-            onClick={() => selectedPage("create")}
+            onClick={() => setPage("create")}
             className={
-              createPostClicked
+              iconSetted === "create"
                 ? "text-white bg-black cursor-pointer rounded-md w-5 h-5  p-1"
                 : "text-white bg-slate-300 cursor-pointer rounded-md w-5 h-5  p-1"
             }
@@ -80,9 +75,9 @@ const Navbar = () => {
         </Link>
         <Link to="/liked-post">
           <FontAwesomeIcon
-            onClick={() => selectedPage("liked")}
+            onClick={() => setPage("liked")}
             className={
-              likedClicked
+              iconSetted === "liked"
                 ? "cursor-pointer text-black w-7"
                 : "cursor-pointer text-slate-300 w-7"
             }
@@ -92,9 +87,9 @@ const Navbar = () => {
         </Link>
         <Link to="/saved-post">
           <FontAwesomeIcon
-            onClick={() => selectedPage("saved")}
+            onClick={() => setPage("saved")}
             className={
-              savedClicked
+              iconSetted === "saved"
                 ? "cursor-pointer text-black w-5"
                 : "cursor-pointer text-slate-300 w-5"
             }
@@ -103,10 +98,10 @@ const Navbar = () => {
           />
         </Link>
         {token ? (
-          <Link onClick={() => selectedPage("profile")} to="/profile">
+          <Link onClick={() => setPage("profile")} to="/profile">
             <div
               className={
-                profileClicked
+                iconSetted === "profile"
                   ? "border-2 border-solid border-black p-0.5 rounded-full"
                   : null
               }
