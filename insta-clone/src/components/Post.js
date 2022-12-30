@@ -1,6 +1,8 @@
 import ProfileImg from "./ProfileImg";
 import profileImg from "../img/tomHolland.jpg";
 import Axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+import SingleComment from "./SingleComment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -25,6 +27,8 @@ const Post = ({
   const [isSaved, setIsSaved] = useState(false);
   const [isCommentEmpty, setIsCommentEmpty] = useState(true);
   const [like, setLike] = useState(Math.floor(Math.random() * 100000));
+  const [commentText, setCommentText] = useState("");
+  const [commentList, setCommentList] = useState([]);
 
   const handleLike = () => {
     !isLiked ? setLike(like + 1) : setLike(like - 1);
@@ -63,8 +67,22 @@ const Post = ({
     e.preventDefault();
     if (e.target.value.trim() !== "") {
       setIsCommentEmpty(false);
+      setCommentText(e.target.value);
     } else {
       setIsCommentEmpty(true);
+    }
+  };
+
+  const renderComments = () => {
+    return commentList.map((comment, index) => {
+      return <SingleComment textComment={comment.comment} key={index} />;
+    });
+  };
+
+  const addComment = () => {
+    if (commentText.trim() !== "") {
+      setCommentList([...commentList, { id: uuidv4(), comment: commentText }]);
+      setCommentText("");
     }
   };
 
@@ -137,12 +155,14 @@ const Post = ({
           icon={faFaceSmile}
         />
         <input
+          value={commentText}
           className="outline-none decoration-slate-400 "
           onChange={handleCommentEmpty}
           type="text"
           placeholder="Aggiungi un commento..."
         />
         <p
+          onClick={addComment}
           className={
             isCommentEmpty
               ? "font-bold text-blue-200"
@@ -152,6 +172,8 @@ const Post = ({
           Pubblica
         </p>
       </div>
+      {/* comment div */}
+      <div className="ml-2 mt-1 flex flex-col gap-2">{renderComments()}</div>
     </div>
   );
 };
