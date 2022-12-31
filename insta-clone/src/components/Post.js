@@ -67,10 +67,10 @@ const Post = ({
     e.preventDefault();
     if (e.target.value.trim() !== "") {
       setIsCommentEmpty(false);
-      setCommentText(e.target.value);
     } else {
       setIsCommentEmpty(true);
     }
+    setCommentText(e.target.value);
   };
 
   const renderComments = () => {
@@ -84,6 +84,7 @@ const Post = ({
       setCommentList([...commentList, { id: uuidv4(), comment: commentText }]);
       setCommentText("");
     }
+    setIsCommentEmpty(true);
   };
 
   return (
