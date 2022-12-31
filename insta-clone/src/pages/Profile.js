@@ -16,6 +16,7 @@ import MyPost from "../components/MyPost";
 
 const Profile = () => {
   const [data, setData] = useState("");
+  const [postN, setPostN] = useState(0);
 
   const getPost = async () => {
     try {
@@ -23,6 +24,10 @@ const Profile = () => {
         "https://insta-clone-42ea1-default-rtdb.firebaseio.com/post.json"
       );
       setData(response);
+      if (response.data !== undefined && response.data !== null) {
+        let numberPost = Object.values(response.data);
+        setPostN(numberPost.length);
+      }
     } catch (error) {
       alert(error);
     }
@@ -56,9 +61,8 @@ const Profile = () => {
 
   let userNick = "Tom Holland2013";
   let name = "Tom Holland";
-  let post = 0,
-    follow = Math.floor(Math.random() * 10000),
-    followers = Math.floor(Math.random() * 10000);
+  let follow = Math.floor(Math.random() * 10000);
+  let followers = Math.floor(Math.random() * 10000);
   let description =
     "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, accusantium?";
 
@@ -96,7 +100,7 @@ const Profile = () => {
           <div className="mobile-m:flex mobile-m:gap-2">
             <p>
               {" "}
-              Post: <span className="font-bold">{post}</span>
+              Post: <span className="font-bold">{postN}</span>
             </p>
             <p>
               Followers: <span className="font-bold">{followers}</span>
