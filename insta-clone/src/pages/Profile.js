@@ -13,23 +13,31 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import MyPost from "../components/MyPost";
+import ErrorScreen from "../components/ErrorScreen";
+import LoadingScreen from "../components/LoadingScreen";
 
 const Profile = () => {
   const [data, setData] = useState("");
   const [postN, setPostN] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const getPost = async () => {
+    setLoading(true);
+    setError(false);
     try {
       const response = await Axios.get(
         "https://insta-clone-42ea1-default-rtdb.firebaseio.com/post.json"
       );
       setData(response);
+      setLoading(false);
+      setError(false);
       if (response.data !== undefined && response.data !== null) {
         let numberPost = Object.values(response.data);
         setPostN(numberPost.length);
       }
     } catch (error) {
-      alert(error);
+      setError(true);
     }
   };
 
@@ -66,7 +74,11 @@ const Profile = () => {
   let description =
     "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, accusantium?";
 
-  return (
+  return error ? (
+    <ErrorScreen />
+  ) : loading ? (
+    <LoadingScreen />
+  ) : (
     <div className="mt-3 ml-3 mr-3 tablet-n:flex tablet-n:justify-center items-center flex-col">
       {/* DIV WITH IMG AND USER INFO  */}
       <div className="flex items-start justify-start">

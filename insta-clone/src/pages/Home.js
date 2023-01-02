@@ -7,19 +7,27 @@ import { Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Post from "../components/Post";
 import AllPosts from "../components/AllPosts";
+import ErrorScreen from "../components/ErrorScreen";
+import LoadingScreen from "../components/LoadingScreen";
 
 const Home = () => {
   const token = localStorage.getItem("token");
   const [data, setData] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const getPost = async () => {
+    setLoading(true);
+    setError(false);
     try {
       const response = await Axios.get(
         "https://insta-clone-42ea1-default-rtdb.firebaseio.com/post.json"
       );
       setData(response.data);
+      setLoading(false);
+      setError(false);
     } catch (error) {
-      alert(error);
+      setError(true);
     }
   };
 
@@ -27,7 +35,11 @@ const Home = () => {
     getPost();
   }, []);
 
-  return (
+  return error ? (
+    <ErrorScreen />
+  ) : loading ? (
+    <LoadingScreen />
+  ) : (
     <div>
       {!token ? <Navigate replace to="/signin" /> : null}
       {/* STORIES SLIDER AND PROFILE PICTURES */}
